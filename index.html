@@ -1,24 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="sw">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Kizazi Safari Spirit</title>
+<title>Kizazi Safari Spirit - Wizara ya Injili Tanzania | Major 1</title>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+body{font-family: 'Segoe UI', sans-serif}
+.lang-active{background:#eab308!important;color:#000!important}
+</style>
 </head>
-<body class="bg-[#fdf8f0]">
-<header class="bg-[#1a2e1a] text-white p-4 flex justify-between items-center">
-<b>KIZAZI SAFARI SPIRIT</b>
-<a href="admin.html" class="bg-yellow-600 px-3 py-1 rounded text-black font-bold">Admin</a>
+<body class="bg-[#0f0a1e] text-white">
+<!-- HEADER -->
+<header class="flex justify-between items-center p-4 bg-[#0f0a1e] sticky top-0 z-50 border-b border-yellow-900/20">
+<div class="flex items-center gap-2">
+<div class="w-9 h-9 bg-yellow-500 rounded-full flex items-center justify-center text-black font-black">K</div>
+<div><p class="font-bold text-yellow-500 text-xs leading-none">KIZAZI SAFARI</p><p class="font-bold text-white text-xs leading-none">SPIRIT</p><p class="text-[7px] text-gray-400 tracking-widest">WIZARA YA INJILI TANZANIA</p></div>
+</div>
+<div class="flex items-center gap-2">
+<a href="admin.html" class="bg-yellow-600 text-black px-3 py-1 rounded-full text-[10px] font-bold">ADMIN</a>
+</div>
 </header>
-<div class="p-6 text-center bg-[#1a2e1a] text-white">
-<h1 class="text-3xl font-bold">Karibu Kizazi Safari Lodge</h1>
-<p class="mt-2">Safari & Spirit - Arusha Tanzania</p>
+
+<!-- LANGUAGES >10 -->
+<div class="px-3 py-2 overflow-x-auto whitespace-nowrap bg-black/40 flex gap-1 text-[10px] font-bold">
+<button onclick="setLang('sw')" id="l-sw" class="lang-active px-3 py-1 rounded-full bg-gray-800">SW</button>
+<button onclick="setLang('en')" id="l-en" class="px-3 py-1 rounded-full bg-gray-800">EN</button>
+<button onclick="setLang('fr')" id="l-fr" class="px-3 py-1 rounded-full bg-gray-800">FR</button>
+<button onclick="setLang('pt')" id="l-pt" class="px-3 py-1 rounded-full bg-gray-800">PT</button>
+<button onclick="setLang('es')" id="l-es" class="px-3 py-1 rounded-full bg-gray-800">ES</button>
+<button onclick="setLang('zu')" id="l-zu" class="px-3 py-1 rounded-full bg-gray-800">ZU</button>
+<button onclick="setLang('ha')" id="l-ha" class="px-3 py-1 rounded-full bg-gray-800">HA</button>
+<button onclick="setLang('am')" id="l-am" class="px-3 py-1 rounded-full bg-gray-800">AM</button>
+<button onclick="setLang('ar')" id="l-ar" class="px-3 py-1 rounded-full bg-gray-800">AR</button>
+<button onclick="setLang('hi')" id="l-hi" class="px-3 py-1 rounded-full bg-gray-800">HI</button>
+<button onclick="setLang('zh')" id="l-zh" class="px-3 py-1 rounded-full bg-gray-800">CH</button>
+<button onclick="setLang('de')" id="l-de" class="px-3 py-1 rounded-full bg-gray-800">DE</button>
 </div>
-<div class="max-w-2xl mx-auto p-6">
-<h2 class="font-bold text-xl">Neno la Mungu - Linakuja hapa</h2>
-<p class="mt-2">Mafundisho yako yataonekana hapa baada ya ku-connect Supabase.</p>
-<a href="admin.html" class="block mt-4 bg-black text-white text-center p-3 rounded">Ingia Admin Uanze Ku-post</a>
+
+<!-- MAJOR 1 HERO -->
+<div class="p-3">
+<div class="rounded-[2.2rem] overflow-hidden border border-yellow-600/30 relative bg-gray-900">
+<img src="major1.jpg" onerror="this.src='https://images.unsplash.com/photo-1504052434569-70ad5836ab65?w=600'" class="w-full h-[560px] object-cover object-top">
+<div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+<p class="font-black text-yellow-400 text-sm tracking-widest" id="t-major">MAJOR 1 - WAZIRI WA INJILI TANZANIA</p>
+<p class="text-xs text-white/80">Prophet Baraka Godson Zacharia</p>
 </div>
+</div>
+</div>
+
+<!-- AUDIO PLAYER - Wimbo wa Kuabudu -->
+<div class="mx-3 mt-2 bg-[#1a2e1a] rounded-2xl p-4 flex items-center justify-between border border-yellow-600/20">
+<div>
+<p class="text-yellow-500 font-bold text-xs">🎵 Wimbo wa Kuabudu</p>
+<p class="text-[11px] text-white/70">Bwana ni Mchungaji Wangu</p>
+</div>
+<button id="playBtn" onclick="toggleAudio()" class="w-12 h-12 bg-yellow-500 text-black rounded-full flex items-center justify-center font-black text-xl">▶</button>
+<audio id="worshipAudio" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+</div>
+
+<!-- CONTENT -->
+<div class="bg-[#fdf8f0] text-black rounded-t-[2.5rem] p-5 mt-6">
+
+<!-- NENO LA MUNGU -->
+<h2 class="font-black text-xl text-[#1a2e1a]">📖 Neno la Mungu - Major 1</h2>
+<p class="text-xs text-gray-500">Mafundisho mapya yanaingia hapa moja kwa moja kutoka Admin</p>
+<div id="teachings" class="mt-4 space-y-3"><p class="text-sm text-gray-400">Inapakia mafundisho...</p></div>
+
+<!-- MAHUBIRI & LIVE -->
+<div class="mt-10">
+<h2 class="font-black text-lg text-[#1a2e1a]">🎥 Mahubiri & LIVE</h2>
+<div class="mt-3 bg-black rounded-2xl p-3">
+<p class="text-yellow-500 text-xs font-bold">🔴 LIVE SASA - Maombezi ya Mahema</p>
+<div class="mt-2 aspect-video bg-gray-900 rounded-xl flex items-center justify-center text-white/50 text-xs">
+<iframe id="liveFrame" class="w-full h-full rounded-xl" src="https://www.youtube.com/embed/jfKfPfyJRdk" frameborder="0" allowfullscreen></iframe>
+</div>
+<p class="text-[10px] text-gray-400 mt-2">Badilisha link ya YouTube LIVE kwenye admin.html</p>
+</div>
+<div id="videos" class="grid grid-cols-2 gap-2 mt-3"></div>
+</div>
+
+<!-- MAHEMA AFRICA -->
+<div class="mt-10">
+<h2 class="font-black text-lg text-[#1a2e1a]">⛺ Mahema ya Maombezi - Africa</h2>
+<p class="text-xs text-gray-600 mt-1">Watu wakiombewa, kuponywa na kufunguliwa</p>
+<div class="grid grid-cols-2 gap-2 mt-3">
+<img src="https://images.unsplash.com/photo-1507692049790-de58227181d4?w=400" class="rounded-xl h-32 w-full object-cover">
+<img src="https://images.unsplash.com/photo-1527525443983-6e60c75fff46?w=400" class="rounded-xl h-32 w-full object-cover">
+<img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=400" class="rounded-xl h-32 w-full object-cover">
+<img src="https://images.unsplash.com/photo-1511635002-a3d8dc0e37e8?w=400" class="rounded-xl h-32 w-full object-cover">
+</div>
+</div>
+
+<!-- MAONO -->
+<div class="mt-10 p-5 bg-[#1a2e1a] text-white rounded-2xl">
+<h3 class="font-black text-yellow-400">🌍 Maono ya Huduma</h3>
+<p class="text-sm mt-2 leading-relaxed">Kizazi Safari Spirit - Kueneza Injili nchi nzima Tanzania na nje ya nchi. Kufungua mahema ya maombezi kila mkoa, kusaidia wahitaji, na kujenga kizazi chenye nguvu ya Roho Mtakatifu. Tunatoka Arusha mpaka Afrika na Dunia.</p>
+<p class="text-xs mt-3 text-yellow-200">Vision: From Arusha to the Nations</p>
+</div>
+
+<!-- SAPOTI HUDUMA - NAMBARI ZAKO HALISI -->
+<div class="mt-10 p-5 bg-yellow-50 border-2 border-yellow-500 rounded-2xl">
+<h3 class="font-black text-[#1a2e1a] text-lg">🙏 Sapoti Huduma - Bariki Kazi ya Mungu</h3>
+<p class="text-xs mt-1 text-gray-600">Jina: <b>Baraka Godson Zacharia</b></p>
+<div class="mt-4 space-y-3">
+<div class="bg-[#1a2e1a] text-white p-4 rounded-xl flex justify-between items-center">
+<div><p class="text-xs text-yellow-400">AIRTEL MONEY</p><p class="font-black text-lg">0780292248</p><p class="text-[10px]">Baraka Godson Zacharia</p></div>
+<a href="tel:*150*60*0780292248#" class="bg-yellow-500 text-black px-4 py-2 rounded-full text-xs font-bold">Tuma</a>
+</div>
+<div class="bg-[#0f0a1e] text-white p-4 rounded-xl flex justify-between items-center border border-yellow-600/30">
+<div><p class="text-xs text-yellow-400">LIPA Namba - VODACOM</p><p class="font-black text-lg">354926311</p><p class="text-[10px]">Baraka Godson Zacharia</p></div>
+<a href="tel:*150*60*354926311#" class="bg-white text-black px-4 py-2 rounded-full text-xs font-bold">Lipa</a>
+</div>
+<div class="bg-white border p-3 rounded-xl">
+<p class="text-xs">📧 Email: <b>kizazilodge@gmail.com</b></p>
+<p class="text-xs mt-1">Pi Network: <b>godsonbaraka</b></p>
+</div>
+</div>
+</div>
+
+<!-- MAWASILIANO NA WHATSAPP BUTTON NA UJUMBE WAKO -->
+<div class="mt-8 p-5 bg-white border rounded-2xl shadow">
+<h3 class="font-black text-[#1a2e1a]">📞 Mawasiliano ya Moja kwa Moja</h3>
+<p class="text-sm mt-2">📍 Kizazi Safari Lodge, Arusha Tanzania</p>
+<p class="text-sm">📧 kizazilodge@gmail.com</p>
+<p class="text-sm">📱 +255636851335</p>
+<a id="waBtn" href="https://wa.me/255636851335?text=Hello%20mkuu%20Major%201%20nimekutana%20na%20website%20ya%20Kizazi%20Safari%20Spirit%20nikaguswa%20moyoni%2C%20Naomba%20msaada%20wa%20maombi%20Asante%2C" target="_blank" class="block mt-4 bg-green-500 hover:bg-green-600 text-white text-center py-4 rounded-full font-black text-sm">
+💬 WhatsApp Major 1 - Omba Maombi
+</a>
+<p class="text-[10px] text-gray-400 mt-2 text-center">Ujumbe utaenda moja kwa moja kama ulivyoandika</p>
+<a href="mailto:kizazilodge@gmail.com" class="block mt-3 bg-[#1a2e1a] text-white text-center py-3 rounded-full font-bold text-sm">Tuma Email</a>
+</div>
+
+<p class="text-center text-[10px] text-gray-400 mt-10">© 2026 Kizazi Safari Spirit - Major 1 | Baraka Godson Zacharia</p>
+</div>
+
+<script>
+const SUPABASE_URL = localStorage.getItem('k_url');
+const SUPABASE_KEY = localStorage.getItem('k_key');
+function toggleAudio(){
+let a=document.getElementById('worshipAudio');let b=document.getElementById('playBtn');
+if(a.paused){a.play();b.innerText='⏸';}else{a.pause();b.innerText='▶';}
+}
+function setLang(l){
+document.querySelectorAll('[id^=l-]').forEach(e=>e.classList.remove('lang-active'));
+document.getElementById('l-'+l).classList.add('lang-active');
+let t={
+sw:"MAJOR 1 - WAZIRI WA INJILI TANZANIA",
+en:"MAJOR 1 - MINISTER OF GOSPEL TANZANIA",
+fr:"MAJOR 1 - MINISTRE DE L'EVANGILE",
+pt:"MAJOR 1 - MINISTRO DO EVANGELHO",
+es:"MAJOR 1 - MINISTRO DEL EVANGELIO"
+};
+document.getElementById('t-major').innerText=t[l]||t['sw'];
+}
+async function loadAll(){
+if(!SUPABASE_URL){document.getElementById('teachings').innerHTML='<p class="text-sm">Nenda Admin kwanza uweke Supabase ndio mafundisho yataonekana hapa</p>';return;}
+try{
+let sb=supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let {data:teach}=await sb.from('teachings').select('*').order('created_at',{ascending:false}).limit(6);
+if(teach&&teach.length>0){
+document.getElementById('teachings').innerHTML=teach.map(t=>`<div class="bg-white p-4 rounded-xl shadow border-l-4 border-yellow-600"><b>${t.title}</b><br><small class="text-yellow-700 font-bold">${t.verse||''}</small><p class="mt-2 text-sm whitespace-pre-wrap">${t.content}</p><p class="text-[10px] text-gray-400 mt-2">${new Date(t.created_at).toLocaleDateString()}</p></div>`).join('');
+}
+let {data:vids}=await sb.from('videos').select('*').order('created_at',{ascending:false}).limit(4);
+if(vids&&vids.length>0){
+document.getElementById('videos').innerHTML=vids.map(v=>`<div class="bg-black rounded-xl overflow-hidden"><iframe class="w-full h-24" src="${v.url}" frameborder="0"></iframe><p class="text-[10px] p-1 text-white">${v.title||''}</p></div>`).join('');
+}
+}catch(e){console.log(e)}
+}
+loadAll();
+</script>
 </body>
 </html>

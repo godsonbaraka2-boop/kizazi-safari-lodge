@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin - Neno la Mungu</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-gray-100 p-4">
+<div class="max-w-xl mx-auto">
+<h1 class="text-2xl font-bold">Admin - Kizazi Neno la Mungu</h1>
+<div class="bg-white p-4 rounded mt-4">
+<h2 class="font-bold">1. Weka Supabase Yako (Mara moja tu)</h2>
+<input id="url" placeholder="https://xxxxx.supabase.co" class="w-full border p-2 mt-2 rounded">
+<input id="key" placeholder="anon key eyJh..." class="w-full border p-2 mt-2 rounded">
+<button onclick="save()" class="bg-black text-white w-full py-2 rounded mt-2">Hifadhi</button>
+<p class="text-xs mt-2">Nenda supabase.com > Project > Settings > API > copy URL na anon key</p>
+<div class="bg-yellow-50 p-2 mt-3 text-xs rounded">
+<b>MUHIMU:</b> Supabase > Authentication > Configuration > ZIMA Confirm email OFF ili usione tena Email not confirmed
+</div>
+</div>
+<div class="bg-white p-4 rounded mt-4">
+<h2 class="font-bold">2. Ingia</h2>
+<input id="email" placeholder="email yako" class="w-full border p-2 mt-2 rounded">
+<input id="pass" type="password" placeholder="password" class="w-full border p-2 mt-2 rounded">
+<div class="flex gap-2 mt-2">
+<button onclick="reg()" class="flex-1 bg-gray-800 text-white py-2 rounded">Jisajili</button>
+<button onclick="login()" class="flex-1 bg-yellow-600 py-2 rounded font-bold">Ingia</button>
+</div>
+<p id="msg" class="text-sm text-red-600 mt-2"></p>
+</div>
+<div id="post" class="bg-white p-4 rounded mt-4 hidden">
+<h2 class="font-bold">3. Post Neno la Mungu</h2>
+<input id="title" placeholder="Kichwa" class="w-full border p-2 mt-2 rounded">
+<input id="verse" placeholder="Mstari mf: Zaburi 23:1" class="w-full border p-2 mt-2 rounded">
+<textarea id="content" rows="6" placeholder="Andika mafundisho hapa..." class="w-full border p-2 mt-2 rounded"></textarea>
+<button onclick="post()" class="bg-green-900 text-white w-full py-3 rounded mt-2 font-bold">Chapisha</button>
+<p id="pmsg" class="text-sm mt-2"></p>
+</div>
+</div>
+<script>
+let sb=null;
+function save(){
+let u=document.getElementById('url').value.trim();
+let k=document.getElementById('key').value.trim();

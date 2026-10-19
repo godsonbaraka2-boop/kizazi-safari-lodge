@@ -171,5 +171,27 @@ document.getElementById('videos').innerHTML=vids.map(v=>`<div class="bg-black ro
 }
 loadAll();
 </script>
+
+<!-- PI ADS KIZAZI -->
+<div style="text-align:center;margin:30px 0;padding:20px;background:#1a1a2e;border-radius:16px">
+<h3 style="color:#eab308;font-weight:bold">🎬 Pata Punguzo 10% - Tazama Ad</h3>
+<button id="piAdBtn" onclick="showPiAd()" style="background:#6a1b9a;color:white;padding:12px 24px;border-radius:12px;border:none;font-weight:bold">🎬 Tazama Ad Pata Punguzo</button>
+<p id="piAdMsg" style="color:#eab308"></p>
+</div>
+<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+<script>
+Pi.init({version:"2.0",sandbox:false});
+async function showPiAd(){
+let m=document.getElementById('piAdMsg');let b=document.getElementById('piAdBtn')let b=document.getElementById('piAdBtn');
+if(!window.Pi||!window.Pi.Ads){alert('Fungua Pi Browser');return}
+b.innerText='Inapakia...';
+try{
+let r=await Pi.Ads.isAdReady('rewarded');
+if(!r){m.innerText='Hakuna Ads sasa';b.innerText='Tazama Ad';return}
+let res=await Pi.Ads.show('rewarded');
+if(res.result==='AD_REWARDED'){m.innerText='Hongera! Msimbo: KIZAZI10';b.innerText='✅ Punguzo Limetumika';localStorage.setItem('kizazi_discount','KIZAZI10')}
+}catch(e){m.innerText=e.message;b.innerText='Tazama Ad'}
+}
+</script>
 </body>
 </html>. 
